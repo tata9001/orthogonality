@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class StudentFinder {
 
     public static Student findByAge(ArrayList<Student> students) {
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getAge() == 18) {
-                return students.get(i);
+
+        for (Student student : students) {
+            if (student.getAge() == 18) {
+                return student;
             }
         }
         return null;
