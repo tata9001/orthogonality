@@ -2,14 +2,12 @@ package com.tw.finder;
 
 import com.google.common.collect.Lists;
 import com.tw.finder.po.Student;
-import com.tw.finder.predicate.AgeStudentPredicate;
-import com.tw.finder.predicate.NameStudentPredicate;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.matchers.JUnitMatchers;
 
 import java.util.ArrayList;
 
+import static com.tw.finder.StudentFinder.*;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.*;
 
@@ -32,11 +30,11 @@ public class StudentFinderTest {
 
     @Test
     public void testFindByAge() throws Exception {
-        assertThat(StudentFinder.find(students, new AgeStudentPredicate(18)), notNullValue());
+        assertThat(find(students, s -> s.getAge() == 18), notNullValue());
     }
 
     @Test
     public void testFindByName() throws Exception {
-        assertThat(StudentFinder.find(students, new NameStudentPredicate("wy")), notNullValue());
+        assertThat(find(students, s -> s.getName().equals("wy")), notNullValue());
     }
 }
