@@ -32,4 +32,9 @@ public class StudentFinderTest {
     public void testFindByAge() throws Exception {
         assertThat(StudentFinder.findByAge(students), notNullValue());
     }
+
+    @Test
+    public void testFindByName() throws Exception {
+        assertThat(StudentFinder.findByName(students), notNullValue());
+    }
 }

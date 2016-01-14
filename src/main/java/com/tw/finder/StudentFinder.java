@@ -15,4 +15,14 @@ public class StudentFinder {
         }
         return null;
     }
+
+    public static Student findByName(ArrayList<Student> students) {
+
+        for (Student student : students) {
+            if (student.getName().equals("wy")) {
+                return student;
+            }
+        }
+        return null;
+    }
 }
