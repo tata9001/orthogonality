@@ -2,6 +2,8 @@ package com.tw.finder;
 
 import com.google.common.collect.Lists;
 import com.tw.finder.po.Student;
+import com.tw.finder.predicate.AgeStudentPredicate;
+import com.tw.finder.predicate.NameStudentPredicate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.matchers.JUnitMatchers;
@@ -30,11 +32,11 @@ public class StudentFinderTest {
 
     @Test
     public void testFindByAge() throws Exception {
-        assertThat(StudentFinder.findByAge(students), notNullValue());
+        assertThat(StudentFinder.find(students, new AgeStudentPredicate(18)), notNullValue());
     }
 
     @Test
     public void testFindByName() throws Exception {
-        assertThat(StudentFinder.findByName(students), notNullValue());
+        assertThat(StudentFinder.find(students, new NameStudentPredicate("wy")), notNullValue());
     }
 }

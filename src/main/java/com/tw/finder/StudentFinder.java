@@ -1,28 +1,20 @@
 package com.tw.finder;
 
 import com.tw.finder.po.Student;
+import com.tw.finder.predicate.StudentPredicate;
 
 import java.util.ArrayList;
 
 public class StudentFinder {
 
-    public static Student findByAge(ArrayList<Student> students) {
+    public static Student find(ArrayList<Student> students, StudentPredicate p) {
 
         for (Student student : students) {
-            if (student.getAge() == 18) {
+            if (p.test(student)) {
                 return student;
             }
         }
         return null;
     }
 
-    public static Student findByName(ArrayList<Student> students) {
-
-        for (Student student : students) {
-            if (student.getName().equals("wy")) {
-                return student;
-            }
-        }
-        return null;
-    }
 }
