@@ -55,6 +55,11 @@ public class FinderTest {
     }
 
     @Test
+    public void testFindByEqAgeAndMale() throws Exception {
+        assertThat(find(students, StudentPredicates.age(eq(17)).and(StudentPredicates.male(eq(false)))), notNullValue());
+    }
+
+    @Test
     public void testFindByNeAge() throws Exception {
         assertThat(find(students, StudentPredicates.age(ne(18))), notNullValue());
     }
