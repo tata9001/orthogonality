@@ -11,7 +11,7 @@ import static com.tw.finder.Finder.find;
 import static com.tw.finder.matcher.Matcher.eq;
 import static com.tw.finder.matcher.Matcher.ne;
 import static com.tw.finder.predicate.HumanPredicates.*;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -43,29 +43,28 @@ public class FinderTest {
 
     @Test
     public void testFindBySex() throws Exception {
-        assertThat(find(teachers, male(eq(true))), notNullValue());
+        assertThat(find(teachers, male(eq(true))).isPresent(), is(true));
     }
 
 
     @Test
     public void testFindByEqAge() throws Exception {
-        assertThat(find(students, age(eq(18))), notNullValue());
+        assertThat(find(students, age(eq(18))).isPresent(), is(true));
     }
 
     @Test
     public void testFindByEqAgeAndMale() throws Exception {
-        assertThat(find(students, age(eq(17)).and(male(eq(false)))), notNullValue());
+        assertThat(find(students, age(eq(17)).and(male(eq(false)))).isPresent(), is(true));
     }
 
     @Test
     public void testFindByNeAge() throws Exception {
-        assertThat(find(students, age(ne(18))), notNullValue());
+        assertThat(find(students, age(ne(18))).isPresent(), is(true));
     }
 
     @Test
     public void testFindByName() throws Exception {
-
-        assertThat(find(students, name(eq("wy"))), notNullValue());
+        assertThat(find(students, name(eq("wy"))).isPresent(), is(true));
     }
 
 }
