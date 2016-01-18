@@ -1,9 +1,7 @@
 package com.tw.finder;
 
 import com.google.common.collect.Lists;
-import com.tw.finder.po.Student;
-import com.tw.finder.po.Teacher;
-import com.tw.finder.predicate.HumanPredicates;
+import com.tw.finder.po.Human;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,26 +19,26 @@ import static org.junit.Assert.assertThat;
  */
 public class FinderTest {
 
-    private ArrayList<Teacher> teachers;
+    private ArrayList<Human> teachers;
 
-    private ArrayList<Student> students;
+    private ArrayList<Human> students;
 
     @Before
     public void setUp() throws Exception {
         students = Lists.newArrayList();
-        students.add(Student.create("wy", 19, true));
-        students.add(Student.create("xq", 17, true));
-        students.add(Student.create("ym", 17, false));
-        students.add(Student.create("fd", 18, true));
-        students.add(Student.create("zx", 20, true));
+        students.add(Human.student("wy", 19, true));
+        students.add(Human.student("xq", 17, true));
+        students.add(Human.student("ym", 17, false));
+        students.add(Human.student("fd", 18, true));
+        students.add(Human.student("zx", 20, true));
 
 
         teachers = Lists.newArrayList();
-        teachers.add(Teacher.create("wy", 19, true));
-        teachers.add(Teacher.create("xq", 17, true));
-        teachers.add(Teacher.create("ym", 17, false));
-        teachers.add(Teacher.create("fd", 18, true));
-        teachers.add(Teacher.create("zx", 20, true));
+        teachers.add(Human.teacher("wy", 19, true));
+        teachers.add(Human.teacher("xq", 17, true));
+        teachers.add(Human.teacher("ym", 17, false));
+        teachers.add(Human.teacher("fd", 18, true));
+        teachers.add(Human.teacher("zx", 20, true));
     }
 
     @Test

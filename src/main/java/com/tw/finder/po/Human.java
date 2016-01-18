@@ -26,4 +26,11 @@ public class Human {
         return name;
     }
 
+    public static Human student(String name, int age, boolean male) {
+        return new Human(name, age, male);
+    }
+
+    public static Human teacher(String name, int age, boolean male) {
+        return new Human(name, age, male);
+    }
 }
