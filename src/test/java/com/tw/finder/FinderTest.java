@@ -4,14 +4,16 @@ import com.google.common.collect.Lists;
 import com.tw.finder.po.Student;
 import com.tw.finder.po.Teacher;
 import com.tw.finder.predicate.Predicate;
+import com.tw.finder.predicate.StudentPredicates;
+import com.tw.finder.predicate.TeacherPredicates;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.tw.finder.Finder.*;
+import static com.tw.finder.Finder.find;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by yunwang on 1/13/16.
@@ -42,21 +44,19 @@ public class FinderTest {
 
     @Test
     public void testFindBySex() throws Exception {
-        Predicate<Teacher> p = t -> !t.isMale();
-        assertThat(find(teachers, p), notNullValue());
+        assertThat(find(teachers, TeacherPredicates.male()), notNullValue());
     }
 
 
     @Test
     public void testFindByAge() throws Exception {
-        Predicate<Student> p = s -> s.getAge() == 18;
-        assertThat(find(students, p), notNullValue());
+        assertThat(find(students, StudentPredicates.age(18)), notNullValue());
     }
 
     @Test
     public void testFindByName() throws Exception {
 
-        Predicate<Student> p = s -> s.getName().equals("wy");
-        assertThat(find(students, p), notNullValue());
+        assertThat(find(students, StudentPredicates.name("wy")), notNullValue());
     }
+
 }
