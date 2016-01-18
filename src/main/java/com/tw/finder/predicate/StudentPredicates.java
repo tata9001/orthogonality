@@ -1,5 +1,6 @@
 package com.tw.finder.predicate;
 
+import com.tw.finder.matcher.Matcher;
 import com.tw.finder.po.Student;
 
 /**
@@ -7,15 +8,15 @@ import com.tw.finder.po.Student;
  */
 public class StudentPredicates {
 
-    public static Predicate<Student> name(String wy) {
-        return s -> s.getName().equals(wy);
+    public static Predicate<Student> name(Matcher<String> m) {
+        return s -> m.matches(s.getName());
     }
 
-    public static Predicate<Student> age(int age) {
-        return s -> s.getAge() == age;
+    public static Predicate<Student> age(Matcher<Integer> m) {
+        return s -> m.matches(s.getAge());
     }
 
-    public static Predicate<Student> male() {
-        return s -> s.isMale();
+    public static Predicate<Student> male(Matcher<Boolean> m) {
+        return s -> m.matches(s.isMale());
     }
 }
