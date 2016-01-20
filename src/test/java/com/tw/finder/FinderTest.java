@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 import static com.tw.finder.Finder.find;
-import static com.tw.finder.matcher.Matcher.eq;
-import static com.tw.finder.matcher.Matcher.ne;
 import static com.tw.finder.predicate.HumanPredicates.*;
+import static java.util.function.Predicate.isEqual;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -43,28 +43,29 @@ public class FinderTest {
 
     @Test
     public void testFindBySex() throws Exception {
-        assertThat(find(teachers, male(eq(true))).isPresent(), is(true));
+        assertThat(find(teachers, male(isEqual(true))).isPresent(), is(true));
     }
 
 
     @Test
     public void testFindByEqAge() throws Exception {
-        assertThat(find(students, age(eq(18))).isPresent(), is(true));
+        assertThat(find(students, age(isEqual(18))).isPresent(), is(true));
     }
 
     @Test
     public void testFindByEqAgeAndMale() throws Exception {
-        assertThat(find(students, age(eq(17)).and(male(eq(false)))).isPresent(), is(true));
+        assertThat(find(students, age(isEqual(17)).and(male(isEqual(false)))).isPresent(), is(true));
     }
 
     @Test
     public void testFindByNeAge() throws Exception {
-        assertThat(find(students, age(ne(18))).isPresent(), is(true));
+        Predicate<Integer> equal = isEqual(18);
+        assertThat(find(students, age(equal.negate())).isPresent(), is(true));
     }
 
     @Test
     public void testFindByName() throws Exception {
-        assertThat(find(students, name(eq("wy"))).isPresent(), is(true));
+        assertThat(find(students, name(isEqual("wy"))).isPresent(), is(true));
     }
 
 }
